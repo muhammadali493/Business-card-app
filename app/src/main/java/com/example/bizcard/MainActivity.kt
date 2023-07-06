@@ -6,6 +6,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -132,19 +133,19 @@ fun Content(modifier: Modifier = Modifier){
                 "Project 5",
                 "Project 6",
                 "Project 7",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5",
-                "Project 5"
+                "Project 8",
+                "Project 9",
+                "Project 10",
+                "Project 11",
+                "Project 12",
+                "Project 13",
+                "Project 14",
+                "Project 15",
+                "Project 16",
+                "Project 17",
+                "Project 18",
+                "Project 19",
+                "Project 20"
                 )
             )
         }
@@ -155,7 +156,30 @@ fun Content(modifier: Modifier = Modifier){
 fun Portfolio(data: List<String>) {
     LazyColumn {
         items(data){item: String ->
-            Text(text = item)
+            Card(
+                modifier = Modifier
+                    .padding(12.dp)
+                    .fillMaxWidth(),
+                shape = RoundedCornerShape(4.dp),
+                elevation = 4.dp
+            ) {
+                Row(
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .background(MaterialTheme.colors.surface)
+                ) {
+                    ProfileImage(modifier = Modifier.size(100.dp))
+                    Column(
+                        modifier = Modifier.padding(8.dp)
+                            .align(alignment = Alignment.CenterVertically)
+                    ) {
+                        Text(
+                            text = item,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
+                }
+            }
         }
     }
 }
@@ -188,7 +212,7 @@ private fun Info() {
 @Composable
 private fun ProfileImage(modifier: Modifier = Modifier) {
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .size(160.dp)
             .padding(4.dp),
         shape = CircleShape,
@@ -199,7 +223,7 @@ private fun ProfileImage(modifier: Modifier = Modifier) {
         Image(
             painter = painterResource(id = R.drawable.profile),
             contentDescription = "Profile image",
-            modifier = Modifier.size(140.dp),
+            modifier = modifier.size(140.dp),
             contentScale = ContentScale.Crop
         )
     }
